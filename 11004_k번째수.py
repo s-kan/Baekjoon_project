@@ -1,11 +1,13 @@
+import sys
+
 def merge_sort(arr):
-    if len(arr) < 2:
+    if len(arr)<2:
         return arr
-    mid = len(arr)//2
-    low_arr = merge_sort(arr[:mid])
-    high_arr = merge_sort(arr[mid:])
-    l = h = k = 0
-    while l<len(low_arr) and h<len(high_arr):
+    m = len(arr)//2
+    low_arr = merge_sort(arr[:m])
+    high_arr = merge_sort(arr[m:])
+    l = h = k =  0
+    while l < len(low_arr) and h < len(high_arr):
         if low_arr[l] < high_arr[h]:
             arr[k] = low_arr[l]
             l += 1
@@ -24,3 +26,8 @@ def merge_sort(arr):
             l += 1
             k += 1
     return arr
+
+n, k = map(int, sys.stdin.readline().split())
+arr = list(map(int, sys.stdin.readline().split()))
+arr = merge_sort(arr)
+print(arr[k-1])
