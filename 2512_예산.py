@@ -1,22 +1,19 @@
 n = int(input())
 arr = list(map(int, input().split()))
-arr.sort(reverse = True)
 price = int(input())
+start, end = 1, max(arr)
 
-if sum(arr) <= price:
-    print(max(arr))
-else:
-    ans = max(arr)
-    s = sum(arr)
-    minus = 0
-    while s > price:
-        s += minus
-        minus = 0
-        for i in arr:
-            if i > ans:
-                minus += i-ans
-            else:
-                break
-        s -= minus
-        ans -= 1
-    print(ans+1)
+while start <= end:
+    mid = (start+end)//2
+
+    tmp = 0
+    for i in arr:
+        if i > mid:
+            tmp += i - mid
+    s = sum(arr)-tmp
+
+    if s > price:
+        end = mid - 1
+    else:
+        start = mid + 1
+print(end)
