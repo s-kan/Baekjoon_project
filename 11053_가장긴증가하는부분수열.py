@@ -1,13 +1,10 @@
 n = int(input())
 arr = list(map(int, input().split()))
-ans =  []
+dp = [0 for _ in range(n)]
 
 for i in range(n):
-    tmp = []
-    tmp.append(arr[i])
-    for j in range(i, n):
-        if arr[j] > tmp[-1]:
-            tmp.append(arr[j])
-    ans.append(len(tmp))
-
-print(max(ans))
+    for j in range(i):
+        if arr[j] < arr[i] and dp[i] < dp[j]:
+            dp[i] = dp[j]
+    dp[i] += 1
+print(max(dp))
