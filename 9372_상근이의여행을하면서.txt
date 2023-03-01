@@ -1,0 +1,1 @@
+- 연결그래프(connected graph)의 cycle의 최소 차수는 n이다. 이 문제에서는 cycle에서 edge 하나를 덜 가면 되기 때문에 답은 n-1 이다.
